@@ -1,0 +1,21 @@
+
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
+
+section{
+    font-family: "Roboto","Helvetica", "Arial". sans-serif;
+    margin: 0 auto;
+    max-width: 50em;
+    line-height: 1.5;
+    padding: 4em 1em;
+    color: #555;
+}
+
+h2 {
+    margin-top: 1em;
+    color: dimgrey;
+}
+
+a {
+  color: lightcoral;
+}
+
