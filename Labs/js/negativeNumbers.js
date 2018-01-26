@@ -3,7 +3,11 @@ function password(){
    let x = document.getElementById("password").value;
     let y = document.getElementById("password2").value;
     
-    if(x == ""){alert("Favor de ingresar una contraseña")}
+    if(document.getElementById("nombre").value == ""){
+        alert("Ingresa un nombre de usuario");
+    }
+    
+   else if(x == ""){alert("Favor de ingresar una contraseña")}
     
     else if(y == ""){alert("favor de verificar la contraseña");}
     
