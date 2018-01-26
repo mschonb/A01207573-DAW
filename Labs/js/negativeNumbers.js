@@ -22,16 +22,19 @@ function mAvg(){
     let n = prompt("Dame el numero de renglones");
     let m = prompt("Dame el numero de columnas");
     
-    let mat = [[],[]];
+    let mat = [[,],[,]];
     let res = [];
     var aux = 0;
     
     for(let i = 0; i < n; i++){//No entiendo porque deja de funcionar si la matriz es mas grande de 2x2. Siempre se detiene en el [2][0]
         for(let j = 0; j < m; j++){
             mat[i][j] = prompt("Dame el valor "+j +" de el renglon "+i);
+            console.log("Mat: "+mat);
             aux += parseInt(mat[i][j]);  
+            console.log("Aux: "+aux);
         }
         res[i] = aux/m;
+        console.log("res: "+res);
         aux = 0;
            
     }
