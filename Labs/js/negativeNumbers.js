@@ -1,3 +1,17 @@
+
+function password(){
+   let x = document.getElementById("password").value;
+    let y = document.getElementById("password2").value;
+    
+    if(x == ""){alert("Favor de ingresar una contraseña")}
+    
+    else if(y == ""){alert("favor de verificar la contraseña");}
+    
+    else if(x === y){alert("Verificado");}
+    
+    else{alert("Las contraseñas no son iguales");}
+    
+}
 function negativeNumbers(){
     let n = prompt("Dame el tamaño del array");
     let arr = [];
