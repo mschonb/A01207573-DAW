@@ -15,5 +15,5 @@ function ayudaMatricula(){
 var tiempo;
 document.onmousemove = function(){
   clearTimeout(tiempo);
-  tiempo = setTimeout(function(){alert("Haz algo hombre :/");}, 10000);
+  tiempo = setTimeout(function(){alert("Haz algo hombre :/");}, 1000000);
 }
