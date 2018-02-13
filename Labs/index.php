@@ -321,6 +321,65 @@
               
               <p><strong>¿Qué es el zIndex y para qué sirve?</strong></p>
               <p>El Z-Index determina el orden de los elementos en la página, es decir, cuales se muestran en frente y cuales por detrás. Sirve para sobreponer texto en una imágen, por ejemplo.</p>
+              
+               <h2>
+            LAB 8
+            <br></h2><br> 
+              <strong>Usar algun framework para mejorar el look del documento</strong>
+              <p>Utilize Materialize</p>
+
+               <h2>
+            LAB 9
+            <br></h2><br> 
+         <?php
+              function promedio($arr){
+                  $aux = 0;
+                  
+                  foreach($arr as $thing){
+                    $aux = $thing + $aux;
+                  }
+                      echo "<br>" . $aux/sizeof($arr);
+                    unset($thing);
+              }
+              
+              function median($arr){
+                $x = sizeof($arr)/2;
+                echo $arr[$x];  
+              }
+              
+              function formaRara($arr){
+                foreach($arr as $thing){
+                  echo $thing . "," ;  
+                }
+                  
+                  unset($thing);
+                  $arrA = sort($arr);
+                  $arrB = rsort($arr);
+                  
+                  echo "<ul>
+                    <li> Arreglo normal:   
+                  </ul>";
+
+              }
+              
+              $arr = array(1,2,3,4,5,6,7,8,9);
+              echo "Arreglo usado: ";
+                foreach($arr as $thing){
+                  echo $thing . "," ;
+              }
+    
+              echo "<br><strong>Función que calcula el promedio de un array</strong>";
+              
+              promedio($arr);
+              
+              echo"<p><strong>Función que calcula la mediana de un array</strong><br>";
+              
+              median($arr);
+              
+              echo "<p><strong>Función que muestra el array de varias formas raras</strong><br>";
+              
+              formaRara($arr);
+              ?>
 
           </section>
         </body>
