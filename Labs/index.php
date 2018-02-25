@@ -380,9 +380,37 @@
               
               formaRara($arr);
               ?>
+              
+            <h2>
+            LAB 11
+            <br></h2><br>
+              
+              <form action="bien.php" method="post">
+                  Usuario<input type="text" name="usuario" placeholder="lalo">
+                  Contraseña<input type="password" name="contraseña" placeholder="hockey">
+                  <button>Enviar</button>
+              
+              </form>
+              
+            <h2>
+            PREGUNTAS LAB 11
+            <br></h2><br>
+              
+              <strong>¿Por qué es una buena práctica separar el controlador de la vista?.
+              </strong><br>
+              
+              <strong>Aparte de los arreglos $_POST y $_GET, ¿qué otros arreglos están predefinidos en php y cuál es su función?</strong><br>
+              
+              <strong>Explora las funciones de php, y describe 2 que no hayas visto en otro lenguaje y que llamen tu atención.</strong><br>
+              
+              <strong>¿Qué es XSS y cómo se puede prevenir?</strong>
 
           </section>
         </body>
+      
+        <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+          
       
    <script type="text/javascript" src="js/negativeNumbers.js"></script>
       
