@@ -396,14 +396,20 @@
             PREGUNTAS LAB 11
             <br></h2><br>
               
+              
               <strong>¿Por qué es una buena práctica separar el controlador de la vista?.
               </strong><br>
               
+              <p>Es porque hace mas sencillo de entender el codigo para alguien mas. Aparte es una buena practica de programación que hace que sea mas facil encontrar errores y debugear el código</p>
+              
               <strong>Aparte de los arreglos $_POST y $_GET, ¿qué otros arreglos están predefinidos en php y cuál es su función?</strong><br>
+              <p>Existe $_SESSION que guarda todos los datos en un arreglo de sesión. Existe $_GLOBAL que guarda variables y datos globales, que puedes acceder desde cualquier parte de la jerarquía de documentos en cualquier momento.</p>
               
               <strong>Explora las funciones de php, y describe 2 que no hayas visto en otro lenguaje y que llamen tu atención.</strong><br>
+              <p>header reenvía al usuario a otra pagina, es como href en html. Ziparchive agrega un archivo tipo .zip</p>
               
               <strong>¿Qué es XSS y cómo se puede prevenir?</strong>
+              <p>XSS es un tipo de ataque donde pueden meter archivos malignos a algun output de tu pagina. Puedes usar htmlspecialchars() para prevenir este tipo de ataque.</p>
 
           </section>
         </body>
