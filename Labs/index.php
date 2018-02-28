@@ -410,6 +410,11 @@
               
               <strong>¿Qué es XSS y cómo se puede prevenir?</strong>
               <p>XSS es un tipo de ataque donde pueden meter archivos malignos a algun output de tu pagina. Puedes usar htmlspecialchars() para prevenir este tipo de ataque.</p>
+              
+              <h2>
+            LAB 13
+            <br></h2><br>
+              <p>Haz click en el botón para ir a la página del lab 13</p><a href ='lab13.php'><button>Ir al lab</button></a>
 
           </section>
         </body>
