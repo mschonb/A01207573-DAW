@@ -415,6 +415,21 @@
             LAB 13
             <br></h2><br>
               <p>Haz click en el botón para ir a la página del lab 13</p><a href ='lab13.php'><button>Ir al lab</button></a>
+              
+              <h2>PEGUNTAS LAB 13</h2>
+              <br><br>
+              
+              <strong>¿Por qué es importante hacer un session_unset() y luego un session_destroy()?</strong><br>
+              
+              <p>Session unset borra todas las variables de la sesion y luego destroy la destruye, es importante hacerlo de esta manera por seguridad</p>
+              
+              <strong>¿Cuál es la diferencia entre una variable de sesión y una cookie?</strong><br>
+              <p>Una variable de sesion se guarda en el servidor mientras que una cookie se guarda en el cliente</p>
+              
+              <strong>¿Qué técnicas se utilizan en sitios como facebook para que el usuario no sobreescriba sus fotos en el sistema de archivos cuando sube una foto con el mismo nombre?</strong><br>
+              <p>Le pueden agregar la fecha a la llave primaria para que no se dupliquen registros</p>
+              
+              <strong>¿Qué es CSRF y cómo puede prevenirse?</strong>
 
           </section>
         </body>
