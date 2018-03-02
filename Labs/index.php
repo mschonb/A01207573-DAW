@@ -430,7 +430,23 @@
               <p>Le pueden agregar la fecha a la llave primaria para que no se dupliquen registros</p>
               
               <strong>¿Qué es CSRF y cómo puede prevenirse?</strong>
-
+              
+              
+              <h2>
+            LAB 14
+            <br></h2><br>
+              
+           <p>Haz click en el botón para ir a la página del lab 14</p><a href ='lab13.php'><button>Ir al lab</button></a>
+              
+            <h2>
+            LAB 14 PREGUNTAS
+            <br></h2><br>
+              
+            <strong>  ¿Qué es ODBC y para qué es útil?</strong><br><p>Es un api para bases de datos que puede acceder a cualquier BD. Es útil porque define un estandar para comunicarnos con las BD</p>
+             <strong> ¿Qué es SQL Injection? </strong>
+              <br><p>Es un ataque donde se agregan datos de SQL externos para poder acceder a la base de datos</p>
+              <strong>¿Qué técnicas puedes utilizar para evitar ataques de SQL Injection?</strong> <br><p>Usar una @ para que todo lo que se inserte sea interpretado de manera literal y no funcione como query de SQL</p>
+              
           </section>
         </body>
       
