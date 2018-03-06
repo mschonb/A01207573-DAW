@@ -1,0 +1,244 @@
+select * from materiales
+44 Resultados
+1000	Varilla 3/16	100.00
+1010	Varilla 4/32	115.00
+1020	Varilla 3/17	130.00
+
+
+select * from materiales 
+where clave=1000 
+1 Resultado
+1000	Varilla 3/16	100.00
+
+
+select clave,rfc,fecha from entregan 
+132 Resultados
+1000	AAAA800101   	1998-07-08 00:00:00.000
+1000	AAAA800101   	1999-08-08 00:00:00.000
+1000	AAAA800101   	2000-04-06 00:00:00.000
+
+
+select * from materiales,entregan 
+where materiales.clave = entregan.clave 
+132 Resultados
+1000	Varilla 3/16	100.00	1000	AAAA800101   	5000	1998-07-08 00:00:00.000	165.00
+1000	Varilla 3/16	100.00	1000	AAAA800101   	5019	1999-08-08 00:00:00.000	254.00
+1000	Varilla 3/16	100.00	1000	AAAA800101   	5019	2000-04-06 00:00:00.000	7.00
+
+Si algún material no ha se ha entregado ¿Aparecería en el resultado de esta consulta? 
+NO
+
+select * from entregan,proyectos 
+where entregan.numero < = proyectos.numero 
+1188
+1000	AAAA800101   	5000	1998-07-08 00:00:00.000	165.00	5000	Vamos Mexico
+1200	EEEE800101   	5000	2000-03-05 00:00:00.000	177.00	5000	Vamos Mexico
+1400	AAAA800101   	5000	2002-03-12 00:00:00.000	382.00	5000	Vamos Mexico
+
+(select * from entregan where clave=1450) 
+union 
+(select * from entregan where clave=1300) 
+3 Resultados
+1300	GGGG800101   	5005	2002-06-10 00:00:00.000	521.00
+1300	GGGG800101   	5005	2003-02-02 00:00:00.000	457.00
+1300	GGGG800101   	5010	2003-01-08 00:00:00.000	119.00
+
+
+¿Cuál sería una consulta que obtuviera el mismo resultado sin usar el operador Unión? Compruébalo. 
+select * from entregan
+where clave = 1450 or clave = 1300
+3 Resultados 
+1300	GGGG800101   	5005	2002-06-10 00:00:00.000	521.00
+1300	GGGG800101   	5005	2003-02-02 00:00:00.000	457.00
+1300	GGGG800101   	5010	2003-01-08 00:00:00.000	119.00
+
+(select clave from entregan where numero=5001) 
+intersect 
+(select clave from entregan where numero=5018) 
+1 Resultado
+1010
+
+SQL 
+(select * from entregan) 
+minus 
+(select * from entregan where clave=1000) 
+0 Resultados
+Minus no esta definido.
+
+select * from entregan,materiales 
+5808 Resultados
+1000	AAAA800101   	5000	1998-07-08 00:00:00.000	165.00	1000	Varilla 3/16	100.00
+1000	AAAA800101   	5019	1999-08-08 00:00:00.000	254.00	1000	Varilla 3/16	100.00
+1000	AAAA800101   	5019	2000-04-06 00:00:00.000	7.00	1000	Varilla 3/16	100.00
+¿Cómo está definido el número de tuplas de este resultado en términos del número de tuplas de entregan y de materiales? 
+Es la combinacion de todos los elementos de entregan con todos los elementos de materiales es el producto cartesiano
+
+Plantea ahora una consulta para obtener las descripciones de los materiales entregados en el año 2000. 
+set DATEFORMAT dmy
+select descripcion
+from materiales m, entregan e
+where m.clave = e.clave and fecha between '1/1/2000' and '31/12/2000' 
+28 Resultados
+Varilla 3/16
+Varilla 4/32
+Varilla 4/32
+
+¿Por qué aparecen varias veces algunas descripciones de material? 
+Porque no estamos agrupando por nada
+
+Agrega la palabra distinct inmediatamente después de la palabra select a la consulta que planteaste antes. 
+¿Qué resultado obtienes en esta ocasión? 
+Las descripciones de los materiales entregados en el año 2000 sin repetirse
+
+SELECT * FROM materiales where Descripcion LIKE 'Si%' 
+2 resultados
+1120	Sillar rosa	100.00
+1130	Sillar gris	110.00
+
+¿Qué resultado obtienes? 
+1120	Sillar rosa	100.00
+1130	Sillar gris	110.00
+Explica que hace el símbolo '%' 
+Permite que haya texto antes o despues del texto que estamos buscando
+Encuentra
+¿Qué sucede si la consulta fuera : LIKE 'Si' ? 
+Busca todos las descripciones que sean si
+¿Qué resultado obtienes? 
+Nulo
+Explica a qué se debe este comportamiento. 
+A que no tenemos ningun material con la descripcion exacta 'si'
+
+¿Qué resultado obtienes de ejecutar el siguiente código? 
+¿Que resultado obtienes? ¿¿¿??? 
+¿Para qué sirve DECLARE? 
+Para declarar una variable
+¿Cuál es la función de @foo? 
+es una variable
+¿Que realiza el operador SET? 
+asigna valor a una variable
+
+Ahora explica el comportamiento, función y resultado de cada una de las siguientes consultas: 
+
+SELECT RFC FROM Entregan WHERE RFC LIKE '[A-D]%'; 
+72 resultados
+AAAA800101   
+AAAA800101   
+AAAA800101   
+Obtiene todos los RFCs que empiezan con A,B,C,D
+
+SELECT RFC FROM Entregan WHERE RFC LIKE '[^A]%'; 
+114 Resultados
+BBBB800101   
+BBBB800101   
+BBBB800101   
+Obtiene los RFCs que no tienen A
+
+SELECT Numero FROM Entregan WHERE Numero LIKE '___6'; 
+14 Resultados
+5016
+5016
+5006
+Obtiene los numeros que acaban con el numero 6
+
+SELECT Clave,RFC,Numero,Fecha,Cantidad 
+FROM Entregan 
+WHERE Numero Between 5000 and 5010; 
+60 Resultados
+1000	AAAA800101   	5000	1998-07-08 00:00:00.000	165.00
+1010	BBBB800101   	5001	2000-05-03 00:00:00.000	528.00
+1020	CCCC800101   	5002	2001-07-29 00:00:00.000	582.00
+
+¿Cómo filtrarías rangos de fechas? 
+set dateformat dmy
+between dia/mes/año and dia/mes/año
+
+SELECT RFC,Cantidad, Fecha,Numero 
+FROM [Entregan] 
+WHERE [Numero] Between 5000 and 5010 AND 
+Exists ( SELECT [RFC] 
+FROM [Proveedores] 
+WHERE RazonSocial LIKE 'La%' and [Entregan].[RFC] = [Proveedores].[RFC] ) 
+16 Resultados
+AAAA800101   	165.00	1998-07-08 00:00:00.000	5000
+CCCC800101   	582.00	2001-07-29 00:00:00.000	5002
+AAAA800101   	86.00	1999-01-12 00:00:00.000	5008
+
+
+¿Qué hace la consulta?
+Selecciona el RFC, cantidad, fecha y numero donde el numero es entre 5000
+y 5010 y el registro existe dentro de la tabla de proveedores con razonSocial
+que tiene los caracteres 'la' 
+¿Qué función tiene el paréntesis ( ) después de EXISTS? 
+Es una subconsulta
+
+Tomando de base la consulta anterior del EXISTS, realiza el query que devuelva el mismo resultado, pero usando el operador IN 
+Select RFC, cantidad, fecha, numero
+from entregan
+where numero between 5000 and 5010
+and rfc in (select RFC
+	    from proveedores
+	    where RazonSocial LIKE 'La%')
+
+¿Qué hace la siguiente sentencia? Explica porque 
+SELECT TOP 2 * FROM Proyectos 
+Obtiene los dos primeros resultados de proyectos
+
+¿Qué sucede con la siguiente consulta? Explica porque 
+SELECT TOP Numero FROM Proyectos 
+Obtiene el primer resultado de proyectos basandose en el numero
+
+
+¿Qué consulta usarías para obtener el importe de las entregas es decir, el total en dinero de lo entregado, basado en la cantidad de la entrega y el precio del material y el impuesto asignado? 
+select SUM(Cantidad * m.Costo) as 'TOTAL ENTREGA', E.Clave, cantidad, costo
+FROM Entregan E, Materiales m
+Group BY cantidad, costo, e.clave
+
+Los materiales (clave y descripción) entregados al proyecto "México sin ti no estamos completos". 
+  SELECT m.clave, descripcion
+  FROM materiales m, entregan e, proyectos p
+  WHERE e.clave = m.clave AND p.Numero = e.Numero
+  AND p.Denominacion = 'Mexico sin ti no estamos completos'
+3 Resultados
+
+1030	Varilla 4/33
+1230	Cemento 
+1430	Pintura B1022
+
+
+Los materiales (clave y descripción) que han sido proporcionados por el proveedor "Acme tools". 
+
+	  SELECT m.clave, descripcion
+	  FROM materiales m, entregan e, proveedores p
+	  WHERE m.clave = e.clave and p.RFC = e.RFC
+	  AND p.RazonSocial = 'Acme tools'
+0 Resultados
+No hay proveedor acme tools	
+
+El RFC de los proveedores que durante el 2000 entregaron en promedio cuando menos 300 materiales. 	  
+	  SET DATEFORMAT dmy
+	  SELECT RFC, sum(cantidad) as 'Cantidad Total'
+	  FROM  entregan 
+	  WHERE Fecha between '01/01/2000' AND '31/12/2000' 
+	  AND cantidad > 300
+	  GROUP BY RFC
+8 Results
+
+AAAA800101   	779.00
+BBBB800101   	1796.00
+CCCC800101   	466.00
+
+El Total entregado por cada material en el año 2000. 
+ SET DATEFORMAT dmy
+ Select SUM(e.Cantidad) as 'Cantidad', m.Descripcion
+ FROM Materiales m, Entregan e
+ WHERE e.Clave = m.Clave AND Fecha between '01/01/2000' AND '31/12/2000'
+ GROUP BY m.Descripcion
+
+22 Resultados
+
+366.00	Arena
+466.00	Block
+162.00	Cantera rosa
+
+
+La Clave del material más vendido durante el 2001. (se recomienda usar una vista intermedia para su solución) 
