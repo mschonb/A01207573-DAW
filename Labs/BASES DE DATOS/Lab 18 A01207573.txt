@@ -3,7 +3,6 @@ select sum(cantidad) as 'Cantidad', sum(2*m.Costo*m.PorcentajeImpuesto/100) as  
 from materiales m, entregan e
 where m.clave = e.clave and e.fecha between '1/1/1997' AND '31/12/1997'
 
-SOLO REGRESA UN RESULTADO
 
 select razonsocial, count(e.rfc) as 'Entregas Totales', sum(Cantidad*(2*m.Costo*m.PorcetajeImpuesto/100)) as 'Costo Total'
 from materiales m, proveedores p, entregan e
