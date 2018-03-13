@@ -1,0 +1,72 @@
+set dateformat dmy
+select sum(cantidad) as 'Cantidad', sum(2*m.Costo*m.PorcentajeImpuesto/100) as  'Total'
+from materiales m, entregan e
+where m.clave = e.clave and e.fecha between '1/1/1997' AND '31/12/1997'
+
+SOLO REGRESA UN RESULTADO
+
+select razonsocial, count(e.rfc) as 'Entregas Totales', sum(Cantidad*(2*m.Costo*m.PorcetajeImpuesto/100)) as 'Costo Total'
+from materiales m, proveedores p, entregan e
+where m.clave = e.clave AND p.rfc = e.rfc
+
+SELECT m.clave, m.descripcion, sum(cantidad) as 'Cant Total', min(cantidad) as 'min', max(cantidad) as 'max', (2*m.costo*m.porcentajeImpuesto/100)*'Cant Total' as 'Importe Total'
+FROM entregan e, materiales m
+WHERE e.clave = m.clave
+GROUP BY m.clave, m.descripcion
+HAVING avg(cantidad) > 400
+
+SELECT m.clave, m.descripcion, p.razonsocial, AVG(cantidad) as 'Promedio de cantidad'
+FROM Materiales m, proveedores p, entregan e
+WHERE m.clave = e.clave AND p.rfc = e.rfc
+GROUP BY m.clave,m.descripcion,p.razonsocial
+HAVING 'Promedio de cantidad' < 500
+
+SELECT m.clave,m.descripcion,p.razonsocial,AVG(cantidad) as 'Promedio de cantidad'
+FROM Materiales m, proveedores p, entregan e
+WHERE m.clave = e.clave AND e.rfc = p.rfc
+GROUP BY m.clave,m.descripcion,p.razonsocial
+HAVING 'Promedio de cantidad' < 370 OR 'Promedio de cantidad' >450
+ORDER BY 'Promedio de Cantidad'
+
+SELECT *
+FROM Materiales
+
+insert into materiales values(15000,'Varilla 15/7852', 50, 2.4)
+insert into materiales values(15001,'Varilla 15/78', 145, 2.4)
+insert into materiales values(15002,'Cemento color verde fosfo', 185, 2.4)
+insert into materiales values(15003,'Cemento color amarillo', 250, 2.4)
+insert into materiales values(15004,'Cemento magico transparente', 250, 2.4)
+
+SELECT clave, descripcion
+FROM materiales
+WHERE clave not in(SELECT clave
+		   FROM entregan)
+
+SELECT distinct p.razonsocial
+FROM proveedores p, entregan e, proyectos ps
+WHERE e.rfc = p.rfc AND e.Numero = ps.Numero AND ps.Denominacion = 'Vamos Mexico' AND p.Razonsocial in(SELECT p.Razonsocial
+												       FROM proveedores p,entregan e, proyectos ps
+												       WHERE e.rfc = p.rfc AND ps.Numero = e.numero AND ps.Denominacion = 'Queretaro Limpio')
+
+SELECT descripcion
+FROM materiales
+WHERE clave not in (SELECT clave
+		    FROM entregan e, proyectos p
+		    WHERE p.numero = e.numero AND p.denominacion = 'CIT Yucatán')
+
+SELECT RazonSocial, AVG(Cantidad) as 'Promedio de Cantidad'
+FROM proveedores p, entregan e
+WHERE e.rfc = p.rfc
+GROUP BY RazonSocial
+HAVING 'Promedio de Cantidad' > (SELECT AVG(Cantidad) as 'Promedio de Cantidad'
+				 FROM entregan
+				 WHERE RFC = 'VAGO780901')
+
+SET DATEFORMAT dmy
+SELECT p.rfc, razonSocial
+FROM proyectos ps, proveedores p, entregan e
+WHERE ps.numero = e.numero AND p.rfc = e.rfc AND ps.denominacion = 'Infonavit Durango' AND fecha between '1/1/2000' AND 31/12/2000
+GROUP BY p.rfc, RazonSocial
+HAVING sum(Cantidad) > (SELECT sum(Cantidad)
+			FROM proveedores p, proyectos ps, entregan e
+			WHERE e.rfc = p.rfc AND ps.numero = e.numero AND ps.Denominacion = 'Infonavit Durango' AND fech between '1/1/2001' AND 31/12/2001)
