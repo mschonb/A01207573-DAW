@@ -30,7 +30,7 @@ function addNum(){
         }
         x[currentIndex]++;
 
-        while (currentIndex < 9){
+        while (currentIndex < MAX_INT){
             currentIndex++;
             x[currentIndex] = 0;
         }
