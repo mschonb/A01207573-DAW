@@ -1,0 +1,18 @@
+IDENTIFICADOR
+CONSITENCIA
+
+DESCIRPCION
+En ciertas partes de la pagina encontramos los botones de agregar del lado derecho y en otras partes del lado izquierdo
+
+EVIDENCIAS
+En casi toda la pagina el boton esta del lado izquierdo pero en catalogos se encontraban del lado opuesto
+
+SEVERIDAD
+No es muy grave, ya que es el unico boton y el usuario no se puede confundir y presionar otro por accidente
+lo unico que realmente podria causar es que se saque de onda buscando donde esta el boton de agregar.
+
+POSIBLE SOLUCION
+Estandarizar el lado en el que deberian de estar los botones. Escogan el lado izquierdo o el derecho
+
+RELACION CON OTROS ASPECTOS
+N/A
