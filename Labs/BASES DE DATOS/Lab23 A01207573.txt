@@ -1,0 +1,38 @@
+Marcelo Schonbrunn Bonnin A01207573
+Lab 23 Transacciones
+
+¿Que pasa cuando deseas realizar esta consulta? 
+Obtengo los siguientes resultados
+001	Manuel Rios Maldonado	9000.00
+002	Pablo Perez Ortiz	5000.00
+003	Luis Flores Alvarado	8000.00
+
+
+¿Qué pasa cuando deseas realizar esta consulta? 
+No me deja acceder a la tabla. El query se queda atorado. Pero en la ventana
+original si puedo accedar a la tabla.
+
+Intenta con la siguiente consulta desde la segunda sesión. 
+SELECT * FROM CLIENTES_BANCA where NoCuenta='001' 
+Explica por qué ocurre dicho evento. 
+Si puedo acceder a la tabla de esta forma. Lo que sucede es que se bloqueo la tabla pero
+no las filas de ella, por eso cuando usamos un where si podemos acceder.
+
+
+
+
+Por último regresa a la ventana que mantiene activa tu primer sesión, agrega el siguiente comando a la pantalla y ejecútalo. 
+ROLLBACK TRANSACTION PRUEBA2 
+Revisa nuevamente el contenido de la tabla clientes_banca desde la ventana que inicializaste como la segunda sesión. 
+SELECT * FROM CLIENTES_BANCA 
+¿Qué ocurrió y por qué? 
+La transaccion 2 se elimino de la BD y ahora podemos acceder a ella desde las dos ventanas.
+
+¿Para qué sirve el comando @@ERROR revisa la ayuda en línea? 
+Retorna el numero del error la de la ultima transaccion
+
+¿Explica qué hace la transacción? 
+inserta en la tabla pero no puede porque ya existe el NoCuenta 001
+
+¿Hubo alguna modificación en la tabla? Explica qué pasó y por qué.
+No sucede nada porque hicimos un rollback al final.
